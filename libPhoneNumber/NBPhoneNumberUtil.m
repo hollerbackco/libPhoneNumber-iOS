@@ -171,7 +171,11 @@ static NSMutableDictionary *regexPatternCache;
     NSRegularExpression *regex = [regexPatternCache objectForKey:pattern];
     if (!regex) {
         regex = [NSRegularExpression regularExpressionWithPattern:pattern options:options error:error];
-        [regexPatternCache setObject:regex forKey:pattern];
+        if (regex) {
+            [regexPatternCache setObject:regex forKey:pattern];
+        } else {
+            NSLog(@"%@ ERROR: %@", NSStringFromSelector(_cmd), *error);
+        }
     }
 
     return regex;
