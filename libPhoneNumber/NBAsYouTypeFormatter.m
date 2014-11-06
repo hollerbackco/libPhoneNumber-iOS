@@ -576,6 +576,10 @@
 {
     NSString *accruedInputWithoutFormatting = [self.accruedInput_ copy];
     [self clear];
+
+    if (!accruedInputWithoutFormatting.length) {
+        return @"";
+    }
     
     NSString *result = @"";
     for (unsigned int i=0; i<accruedInputWithoutFormatting.length - 1; i++) {
@@ -591,6 +595,10 @@
     NSString *accruedInputWithoutFormatting = [self.accruedInput_ copy];
     [self clear];
     
+    if (!accruedInputWithoutFormatting.length) {
+        return @"";
+    }
+
     NSString *result = @"";
     for (unsigned int i=0; i<accruedInputWithoutFormatting.length - 1; i++) {
         NSString *ch = [accruedInputWithoutFormatting substringWithRange:NSMakeRange(i, 1)];
